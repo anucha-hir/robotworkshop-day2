@@ -20,8 +20,8 @@ Demo Dictionary
     Log    ${user1.username}
     Log    ${user2.username}
     
-Demo set keywords
-    ${hi} =	Set Variable	Hello, world!   
-    ${hi2} =	Set Variable	I said: ${hi}   
-    ${var1}    ${var2} =	Set Variable	Hello world
+#Demo set keywords
+#    ${hi} =	Set Variable	Hello, world!   
+#    ${hi2} =	Set Variable	I said: ${hi}   
+#    ${var1}    ${var2} =	Set Variable	Hello world
 
