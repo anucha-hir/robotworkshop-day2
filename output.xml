@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.2 (Python 3.8.0 on win32)" generated="20191027 16:32:42.435" rpa="false">
+<suite id="s1" name="Workshop" source="D:\Robot\Workshop">
+<suite id="s1-s1" name="Testscripts" source="D:\Robot\Workshop\testscripts">
+<suite id="s1-s1-s1" name="Demo Resource File" source="D:\Robot\Workshop\testscripts\Demo_Resource_File.robot">
+<kw name="eCommerce Suite Setup" library="Common" type="setup">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<arguments>
+<arg>url=${Target URL}</arg>
+<arg>browser=${Browser}</arg>
+</arguments>
+<msg timestamp="20191027 16:32:43.237" level="INFO">Opening browser 'googlechrome' to base url 'http://automationpractice.com/index.php'.</msg>
+<status status="PASS" starttime="20191027 16:32:43.237" endtime="20191027 16:32:55.015"></status>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20191027 16:32:55.016" endtime="20191027 16:32:56.139"></status>
+</kw>
+<status status="PASS" starttime="20191027 16:32:43.236" endtime="20191027 16:32:56.140"></status>
+</kw>
+<test id="s1-s1-s1-t1" name="Unauthen user checkout single">
+<kw name="eCommerce Test Setup" library="Common" type="setup">
+<kw name="Delete All Cookies" library="SeleniumLibrary">
+<doc>Deletes all cookies.</doc>
+<status status="PASS" starttime="20191027 16:32:56.141" endtime="20191027 16:32:56.149"></status>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${Target URL}</arg>
+</arguments>
+<msg timestamp="20191027 16:32:56.149" level="INFO">Opening url 'http://automationpractice.com/index.php'</msg>
+<status status="PASS" starttime="20191027 16:32:56.149" endtime="20191027 16:32:58.381"></status>
+</kw>
+<status status="PASS" starttime="20191027 16:32:56.140" endtime="20191027 16:32:58.381"></status>
+</kw>
+<kw name="Given Unauthen user add product &quot;2&quot; to shopping cart" library="purchase_product_step">
+<kw name="Add product to shopping cart" library="HomePage">
+<arguments>
+<arg>${product id}</arg>
+</arguments>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20191027 16:32:58.383" endtime="20191027 16:32:58.388"></status>
+</kw>
+<kw name="Mouse Over" library="SeleniumLibrary">
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<arguments>
+<arg>xpath:(//div[@class="product-image-container"])[${product_id}]</arg>
+</arguments>
+<msg timestamp="20191027 16:32:58.389" level="INFO">Simulating Mouse Over on element 'xpath:(//div[@class="product-image-container"])[2]'.</msg>
+<status status="PASS" starttime="20191027 16:32:58.389" endtime="20191027 16:32:58.938"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>CSS:ul#homefeatured a[data-id-product="${product_id}"]</arg>
+</arguments>
+<msg timestamp="20191027 16:32:58.939" level="INFO">Clicking link 'CSS:ul#homefeatured a[data-id-product="2"]'.</msg>
+<status status="PASS" starttime="20191027 16:32:58.938" endtime="20191027 16:32:59.008"></status>
+</kw>
+<status status="PASS" starttime="20191027 16:32:58.383" endtime="20191027 16:32:59.009"></status>
+</kw>
+<status status="PASS" starttime="20191027 16:32:58.382" endtime="20191027 16:32:59.009"></status>
+</kw>
+<kw name="When I checkout product" library="purchase_product_step">
+<kw name="Checkout product" library="HomePage">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>css:a[title="Proceed to checkout"]</arg>
+<arg>5 seconds</arg>
+</arguments>
+<status status="PASS" starttime="20191027 16:32:59.010" endtime="20191027 16:33:00.329"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>css:a[title="Proceed to checkout"]</arg>
+</arguments>
+<msg timestamp="20191027 16:33:00.329" level="INFO">Clicking link 'css:a[title="Proceed to checkout"]'.</msg>
+<status status="PASS" starttime="20191027 16:33:00.329" endtime="20191027 16:33:05.263"></status>
+</kw>
+<status status="PASS" starttime="20191027 16:32:59.010" endtime="20191027 16:33:05.264"></status>
+</kw>
+<status status="PASS" starttime="20191027 16:32:59.009" endtime="20191027 16:33:05.264"></status>
+</kw>
+<kw name="Then I should see total product price equal to &quot;27.00&quot;" library="purchase_product_step">
+<kw name="Verify total product price" library="OrderPage">
+<arguments>
+<arg>${product price}</arg>
+</arguments>
+<kw name="Get Text" library="SeleniumLibrary">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>id:total_product</arg>
+</arguments>
+<assign>
+<var>${total_product_price}</var>
+</assign>
+<msg timestamp="20191027 16:33:05.290" level="INFO">${total_product_price} = $27.00</msg>
+<status status="PASS" starttime="20191027 16:33:05.265" endtime="20191027 16:33:05.290"></status>
+</kw>
+<kw name="Replace String" library="String">
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<arguments>
+<arg>${total_product_price}</arg>
+<arg>$</arg>
+<arg>${EMPTY}</arg>
+</arguments>
+<assign>
+<var>${total_product_price}</var>
+</assign>
+<msg timestamp="20191027 16:33:05.290" level="INFO">${total_product_price} = 27.00</msg>
+<status status="PASS" starttime="20191027 16:33:05.290" endtime="20191027 16:33:05.290"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${Expected_product_price}</arg>
+<arg>${total_product_price}</arg>
+</arguments>
+<status status="PASS" starttime="20191027 16:33:05.290" endtime="20191027 16:33:05.291"></status>
+</kw>
+<status status="PASS" starttime="20191027 16:33:05.265" endtime="20191027 16:33:05.291"></status>
+</kw>
+<status status="PASS" starttime="20191027 16:33:05.264" endtime="20191027 16:33:05.291"></status>
+</kw>
+<tags>
+<tag>smoketest</tag>
+</tags>
+<status status="PASS" starttime="20191027 16:32:56.140" endtime="20191027 16:33:05.291" critical="yes"></status>
+</test>
+<kw name="eCommerce Suite Teardown" library="Common" type="teardown">
+<kw name="Close All Browsers" library="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20191027 16:33:05.293" endtime="20191027 16:33:07.620"></status>
+</kw>
+<status status="PASS" starttime="20191027 16:33:05.293" endtime="20191027 16:33:07.620"></status>
+</kw>
+<status status="PASS" starttime="20191027 16:32:42.490" endtime="20191027 16:33:07.620"></status>
+</suite>
+<status status="PASS" starttime="20191027 16:32:42.487" endtime="20191027 16:33:07.632"></status>
+</suite>
+<status status="PASS" starttime="20191027 16:32:42.442" endtime="20191027 16:33:07.643"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0">Critical Tests</stat>
+<stat pass="1" fail="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0">smoketest</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" id="s1" name="Workshop">Workshop</stat>
+<stat pass="1" fail="0" id="s1-s1" name="Testscripts">Workshop.Testscripts</stat>
+<stat pass="1" fail="0" id="s1-s1-s1" name="Demo Resource File">Workshop.Testscripts.Demo Resource File</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
